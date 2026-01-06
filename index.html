@@ -1,0 +1,1526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+卍, 
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مراجعة شاملة - هياكل الكود في Python</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #1a2980, #26d0ce);
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            padding: 30px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .container::before {
+            content: "🐍";
+            font-size: 300px;
+            position: absolute;
+            right: -50px;
+            top: -50px;
+            opacity: 0.05;
+            z-index: 0;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .header h1 {
+            color: #1a2980;
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header p {
+            color: #555;
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .keywords-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 25px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .keyword-card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            border-left: 5px solid #26d0ce;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .keyword-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+        
+        .keyword-number {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: #1a2980;
+            color: white;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+        
+        .keyword-title {
+            color: #1a2980;
+            font-size: 1.6rem;
+            margin-bottom: 15px;
+            padding-right: 40px;
+        }
+        
+        .mechanism {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            border-right: 3px solid #26d0ce;
+        }
+        
+        .mechanism h3 {
+            color: #26d0ce;
+            margin-bottom: 8px;
+            font-size: 1.2rem;
+        }
+        
+        .code-example {
+            background: #2d3748;
+            color: #e2e8f0;
+            padding: 20px;
+            border-radius: 10px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.95rem;
+            overflow-x: auto;
+            margin-top: 10px;
+            position: relative;
+        }
+        
+        .code-example::before {
+            content: "🐍 Python";
+            position: absolute;
+            top: 5px;
+
+Haider卍, [05/01/2026 12:15 م]
+left: 10px;
+            font-size: 0.8rem;
+            color: #26d0ce;
+            font-family: 'Segoe UI', sans-serif;
+        }
+        
+        .comment {
+            color: #81e6d9;
+        }
+        
+        .keyword {
+            color: #ff6b6b;
+            font-weight: bold;
+        }
+        
+        .string {
+            color: #68d391;
+        }
+        
+        .number {
+            color: #d6bcfa;
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 2px solid #e2e8f0;
+            color: #555;
+            position: relative;
+            z-index: 1;
+        }
+        
+        @media (max-width: 768px) {
+            .keywords-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .header h1 {
+                font-size: 2.2rem;
+            }
+            
+            .container {
+                padding: 20px;
+            }
+            
+            .keyword-card {
+                padding: 20px;
+            }
+        }
+        
+        .print-btn {
+            display: inline-block;
+            background: #1a2980;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        
+        .print-btn:hover {
+            background: #26d0ce;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📚 مراجعة شاملة - هياكل الكود في Python</h1>
+           
+
+        </div>
+        
+        <div class="keywords-grid">
+            
+         
+<!-- Keyword 1: if -->
+<div class="keyword-card">
+    <div class="keyword-number">1</div>
+    <h2 class="keyword-title">📌 if</h2>
+    <div class="mechanism">
+        <h3>الآلية:</h3>
+        <p>يتحقق من شرط، إذا كان صحيحاً ينفذ الكود الموجود تحته</p>
+    </div>
+    <div class="code-example">
+<span class="variable">score</span> = <span class="number">80</span><br>
+<span class="keyword">if</span> <span class="variable">score</span> >= <span class="number">50</span>:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">print</span>(<span class="string">"Pass"</span>)  <span class="comment"># ✅ سيتم طباعة هذا</span>
+    </div>
+</div>
+
+<!-- Keyword 2: elif -->
+<div class="keyword-card">
+    <div class="keyword-number">2</div>
+    <h2 class="keyword-title">📌 elif</h2>
+    <div class="mechanism">
+        <h3>الآلية:</h3>
+        <p>اختصار لـ else if، تتحقق إذا فشلت جميع الشروط السابقة</p>
+    </div>
+    <div class="code-example">
+<span class="variable">score</span> = <span class="number">75</span><br>
+<span class="keyword">if</span> <span class="variable">score</span> >= <span class="number">90</span>:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">print</span>(<span class="string">"Excellent"</span>)<br>
+<span class="keyword">elif</span> <span class="variable">score</span> >= <span class="number">80</span>:  <span class="comment"># ✅ الشرط الأول فشل، جرب هذا</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">print</span>(<span class="string">"Very Good"</span>)<br>
+<span class="keyword">elif</span> <span class="variable">score</span> >= <span class="number">70</span>:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">print</span>(<span class="string">"Good"</span>)  <span class="comment"># ✅ هذا سيتم تنفيذه</span>
+    </div>
+</div>
+
+<!-- Keyword 3: else -->
+<div class="keyword-card">
+    <div class="keyword-number">3</div>
+    <h2 class="keyword-title">📌 else</h2>
+    <div class="mechanism">
+        <h3>الآلية:</h3>
+        <p>تنفذ فقط إذا فشلت جميع الشروط السابقة</p>
+    </div>
+    <div class="code-example">
+<span class="variable">time</span> = <span class="number">22</span><br>
+<span class="keyword">if</span> <span class="variable">time</span> &lt; <span class="number">12</span>:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">print</span>(<span class="string">"Good Morning"</span>)<br>
+<span class="keyword">elif</span> <span class="variable">time</span> &lt; <span class="number">18</span>:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">print</span>(<span class="string">"Good Afternoon"</span>)<br>
+<span class="keyword">else</span>:  <span class="comment"># ✅ جميع الشروط فشلت</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">print</span>(<span class="string">"Good Night"</span>)  <span class="comment"># سيتم طباعة هذا</span>
+    </div>
+</div>
+
+<!-- Keyword 4: match -->
+<div class="keyword-card">
+    <div class="keyword-number">4</div>
+    <h2 class="keyword-title">📌 match (Python 3.10+)</h2>
+    <div class="mechanism">
+        <h3>الآلية:</h3>
+        <p>تشبه switch في لغات أخرى، تطابق القيمة مع أنماط</p>
+    </div>
+    <div class="code-example">
+<span class="variable">day</span> = <span class="string">"Saturday"</span><br>
+<span class="keyword">match</span> <span class="variable">day</span>:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">case</span> <span class="string">"Saturday"</span> | <span class="string">"Sunday"</span>:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">print</span>(<span class="string">"Weekend"</span>)  <span class="comment"># ✅ هذا سيطبع</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">case</span> <span class="string">"Monday"</span>:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">print</span>(<span class="string">"Start of week"</span>)
+    </div>
+</div>
+
+
+<!-- Keyword 5: case -->
+<div class="keyword-card">
+    <div class="keyword-number">5</div>
+    <h2 class="keyword-title">📌 case</h2>
+    <div class="mechanism">
+        <h3>الآلية:</h3>
+        <p>تستخدم مع match لتحديد كل نمط ممكن</p>
+    </div>
+    <div class="code-example">
+<span class="variable">color</span> = <span class="string">"red"</span><br>
+<span class="keyword">match</span> <span class="variable">color</span>:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">case</span> <span class="string">"red"</span>:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">print</span>(<span class="string">"Stop"</span>)  <span class="comment"># ✅</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">case</span> <span class="string">"green"</span>:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">print</span>(<span class="string">"Go"</span>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">case</span> <span class="string">"yellow"</span>:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">print</span>(<span class="string">"Ready"</span>)
+    </div>
+</div>
+
+<!-- Keyword 6: pass -->
+<div class="keyword-card">
+    <div class="keyword-number">6</div>
+    <h2 class="keyword-title">📌 pass</h2>
+    <div class="mechanism">
+        <h3>الآلية:</h3>
+        <p>لا تفعل شيئاً، تستخدم كحشو مؤقت</p>
+    </div>
+    <div class="code-example">
+<span class="variable">x</span> = <span class="number">15</span><br>
+<span class="keyword">if</span> <span class="variable">x</span> &gt; <span class="number">100</span>:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">pass</span>  <span class="comment"># ⏸️ لم أكتب الكود بعد</span><br>
+<span class="keyword">else</span>:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">print</span>(<span class="string">"x is normal"</span>)  <span class="comment"># ✅</span>
+    </div>
+</div>
+
+<!-- Keyword 7: while -->
+<div class="keyword-card">
+    <div class="keyword-number">7</div>
+    <h2 class="keyword-title">📌 while</h2>
+    <div class="mechanism">
+        <h3>الآلية:</h3>
+        <p>تكرر الكود طالما الشرط صحيح</p>
+    </div>
+    <div class="code-example">
+<span class="variable">counter</span> = <span class="number">0</span><br>
+<span class="keyword">while</span> <span class="variable">counter</span> &lt; <span class="number">3</span>:  <span class="comment"># 🔄 كرر 3 مرات</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">print</span>(<span class="string">"Hello"</span>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="variable">counter</span> += <span class="number">1</span><br>
+<span class="comment"># المخرج: Hello، Hello، Hello</span>
+    </div>
+</div>
+
+<!-- Keyword 8: for -->
+<div class="keyword-card">
+    <div class="keyword-number">8</div>
+    <h2 class="keyword-title">📌 for</h2>
+    <div class="mechanism">
+        <h3>الآلية:</h3>
+        <p>تأخذ كل عنصر من متتابعة وتنفذ الكود عليه</p>
+    </div>
+    <div class="code-example">
+<span class="variable">names</span> = [<span class="string">"Ahmed"</span>, <span class="string">"Sara"</span>, <span class="string">"Ali"</span>]<br>
+<span class="keyword">for</span> <span class="variable">name</span> <span class="keyword">in</span> <span class="variable">names</span>:  <span class="comment"># 🔄 لكل اسم في القائمة</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">print</span>(<span class="string">"Hello"</span>, <span class="variable">name</span>)<br>
+<span class="comment"># المخرج: Hello Ahmed، Hello Sara، Hello Ali</span>
+    </div>
+</div>
+
+<!-- Keyword 9: break -->
+<div class="keyword-card">
+    <div class="keyword-number">9</div>
+    <h2 class="keyword-title">📌 break</h2>
+    <div class="mechanism">
+        <h3>الآلية:</h3>
+        <p>توقف الحلقة فوراً وتمنع أي تكرارات أخرى</p>
+    </div>
+
+
+<div class="code-example">
+<span class="keyword">for</span> <span class="variable">num</span> <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">10</span>):<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span> <span class="variable">num</span> == <span class="number">5</span>:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">break</span>  <span class="comment"># ⛔ توقف هنا!</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">print</span>(<span class="variable">num</span>)  <span class="comment"># ✅ 0 1 2 3 4 فقط</span>
+    </div>
+</div>
+
+<!-- Keyword 10: continue -->
+<div class="keyword-card">
+    <div class="keyword-number">10</div>
+    <h2 class="keyword-title">📌 continue</h2>
+    <div class="mechanism">
+        <h3>الآلية:</h3>
+        <p>تتخطى التكرار الحالي وتكمل مع الباقي</p>
+    </div>
+    <div class="code-example">
+<span class="keyword">for</span> <span class="variable">num</span> <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">5</span>):<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span> <span class="variable">num</span> == <span class="number">2</span>:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">continue</span>  <span class="comment"># ⏭️ تخطى الرقم 2</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">print</span>(<span class="variable">num</span>)  <span class="comment"># ✅ 0 1 3 4</span>
+    </div>
+</div>
+
+<!-- Keyword 11: def -->
+<div class="keyword-card">
+    <div class="keyword-number">11</div>
+    <h2 class="keyword-title">📌 def</h2>
+    <div class="mechanism">
+        <h3>الآلية:</h3>
+        <p>تعرف دالة جديدة</p>
+    </div>
+    <div class="code-example">
+<span class="keyword">def</span> <span class="function">calculate_sum</span>(<span class="variable">a</span>, <span class="variable">b</span>):  <span class="comment"># 📝 تعريف الدالة</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">return</span> <span class="variable">a</span> + <span class="variable">b</span><br><br>
+<span class="variable">result</span> = <span class="function">calculate_sum</span>(<span class="number">3</span>, <span class="number">7</span>)  <span class="comment"># 📞 استدعاء الدالة</span><br>
+<span class="keyword">print</span>(<span class="variable">result</span>)  <span class="comment"># ✅ 10</span>
+    </div>
+</div>
+
+<!-- Keyword 12: return -->
+<div class="keyword-card">
+    <div class="keyword-number">12</div>
+    <h2 class="keyword-title">📌 return</h2>
+    <div class="mechanism">
+        <h3>الآلية:</h3>
+        <p>ترجع قيمة من الدالة وتنتهي تنفيذها</p>
+    </div>
+    <div class="code-example">
+<span class="keyword">def</span> <span class="function">double</span>(<span class="variable">num</span>):<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">return</span> <span class="variable">num</span> * <span class="number">2</span>  <span class="comment"># 📤 أخرج الناتج</span><br><br>
+<span class="keyword">print</span>(<span class="function">double</span>(<span class="number">5</span>))  <span class="comment"># ✅ 10</span>
+    </div>
+</div>
+
+<!-- Keyword 13: lambda -->
+<div class="keyword-card">
+    <div class="keyword-number">13</div>
+    <h2 class="keyword-title">📌 lambda</h2>
+    <div class="mechanism">
+        <h3>الآلية:</h3>
+        <p>دالة مجهولة تكتب في سطر واحد</p>
+    </div>
+    <div class="code-example">
+<span class="variable">square</span> = <span class="keyword">lambda</span> <span class="variable">x</span>: <span class="variable">x</span> * <span class="variable">x</span>  <span class="comment"># 🔄 دالة بدون اسم</span><br>
+<span class="keyword">print</span>(<span class="variable">square</span>(<span class="number">4</span>))  <span class="comment"># ✅ 16</span>
+    </div>
+</div>
+
+
+<!-- Keyword 14: yield -->
+<div class="keyword-card">
+    <div class="keyword-number">14</div>
+    <h2 class="keyword-title">📌 yield</h2>
+    <div class="mechanism">
+        <h3>الآلية:</h3>
+        <p>تعيد قيمة وتتوقف مؤقتاً (تتذكر مكانها)</p>
+    </div>
+    <div class="code-example">
+<span class="keyword">def</span> <span class="function">count_to_three</span>():<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">yield</span> <span class="number">1</span>  <span class="comment"># ⏸️ أوقف وأعط 1</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">yield</span> <span class="number">2</span>  <span class="comment"># ⏸️ أوقف وأعط 2</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">yield</span> <span class="number">3</span>  <span class="comment"># ⏸️ أوقف وأعط 3</span><br><br>
+<span class="keyword">for</span> <span class="variable">num</span> <span class="keyword">in</span> <span class="function">count_to_three</span>():<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">print</span>(<span class="variable">num</span>)  <span class="comment"># ✅ 1 ثم 2 ثم 3</span>
+    </div>
+</div>
+
+<!-- Keyword 15: try -->
+<div class="keyword-card">
+    <div class="keyword-number">15</div>
+    <h2 class="keyword-title">📌 try</h2>
+    <div class="mechanism">
+        <h3>الآلية:</h3>
+        <p>جرب تنفيذ كود قد يسبب خطأ</p>
+    </div>
+    <div class="code-example">
+<span class="keyword">try</span>:  <span class="comment"># 🧪 جرب هذا الكود</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="variable">result</span> = <span class="number">10</span> / <span class="number">0</span>  <span class="comment"># ❌ خطأ!</span><br>
+<span class="keyword">except</span>:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">print</span>(<span class="string">"Error occurred"</span>)
+    </div>
+</div>
+            
+        
+<!-- Keyword 16: except -->
+<div class="keyword-card">
+    <div class="keyword-number">16</div>
+    <h2 class="keyword-title">📌 except</h2>
+    <div class="mechanism">
+        <h3>الآلية:</h3>
+        <p>تلتقط الخطأ إذا حدث في try</p>
+    </div>
+    <div class="code-example">
+<span class="keyword">try</span>:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="variable">number</span> = <span class="keyword">int</span>(<span class="string">"text"</span>)  <span class="comment"># ❌ لا يمكن تحويل "text" لرقم</span><br>
+<span class="keyword">except</span> ValueError:  <span class="comment"># 🎯 التقط هذا الخطأ بالتحديد</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">print</span>(<span class="string">"Please enter a valid number"</span>)
+    </div>
+</div>
+
+<!-- Keyword 17: finally -->
+<div class="keyword-card">
+    <div class="keyword-number">17</div>
+    <h2 class="keyword-title">📌 finally</h2>
+    <div class="mechanism">
+        <h3>الآلية:</h3>
+        <p>تنفذ دائماً بغض النظر عن وجود خطأ أو لا</p>
+    </div>
+    <div class="code-example">
+<span class="keyword">try</span>:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="variable">file</span> = <span class="keyword">open</span>(<span class="string">"data.txt"</span>, <span class="string">"r"</span>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">print</span>(<span class="variable">file</span>.read())<br>
+<span class="keyword">except</span>:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">print</span>(<span class="string">"Error in file"</span>)<br>
+<span class="keyword">finally</span>:  <span class="comment"># ✅ دائماً أنفذ</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">print</span>(<span class="string">"Cleaning resources"</span>)
+    </div>
+</div>
+
+<!-- Keyword 18: raise -->
+<div class="keyword-card">
+    <div class="keyword-number">18</div>
+    <h2 class="keyword-title">📌 raise</h2>
+    <div class="mechanism">
+        <h3>الآلية:</h3>
+        <p>أحدث خطأً عمداً لإيقاف البرنامج</p>
+    </div>
+    <div class="code-example">
+<span class="variable">age</span> = -<span class="number">5</span><br>
+<span class="keyword">if</span> <span class="variable">age</span> &lt; <span class="number">0</span>:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">raise</span> ValueError(<span class="string">"Age cannot be negative"</span>)  <span class="comment"># 💥 توقف!</span>
+    </div>
+</div>
+
+<!-- Keyword 19: assert -->
+<div class="keyword-card">
+    <div class="keyword-number">19</div>
+    <h2 class="keyword-title">📌 assert</h2>
+    <div class="mechanism">
+        <h3>الآلية:</h3>
+        <p>تأكد من شرط، وإلا توقف</p>
+    </div>
+    <div class="code-example">
+<span class="variable">score</span> = <span class="number">105</span><br>
+<span class="keyword">assert</span> <span class="number">0</span> &lt;= <span class="variable">score</span> &lt;= <span class="number">100</span>, <span class="string">"Score must be between 0 and 100"</span>  <span class="comment"># ✅ توقف إذا كانت خطأ</span>
+    </div>
+</div>
+
+<!-- Keyword 20: with -->
+<div class="keyword-card">
+    <div class="keyword-number">20</div>
+    <h2 class="keyword-title">📌 with</h2>
+    <div class="mechanism">
+        <h3>الآلية:</h3>
+        <p>افتح وأغلق المورد تلقائياً</p>
+    </div>
+    <div class="code-example">
+<span class="keyword">with</span> <span class="keyword">open</span>(<span class="string">"myfile.txt"</span>, <span class="string">"r"</span>) <span class="keyword">as</span> <span class="variable">file</span>:  <span class="comment"># 🔓 افتح</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="variable">content</span> = <span class="variable">file</span>.read()<br>
+<span class="comment"># هنا الملف أغلق تلقائياً 🔒</span>
+    </div>
+</div>
+
+<!-- Keyword 21: import -->
+<div class="keyword-card">
+    <div class="keyword-number">21</div>
+
+
+<h2 class="keyword-title">📌 import</h2>
+    <div class="mechanism">
+        <h3>الآلية:</h3>
+        <p>أدخل مكتبة لاستخدام وظائفها</p>
+    </div>
+    <div class="code-example">
+<span class="keyword">import</span> <span class="variable">math</span>  <span class="comment"># 📚 أدخل مكتبة الرياضيات</span><br>
+<span class="keyword">print</span>(<span class="variable">math</span>.sqrt(<span class="number">25</span>))  <span class="comment"># ✅ 5.0</span>
+    </div>
+</div>
+
+<!-- Keyword 22: from -->
+<div class="keyword-card">
+    <div class="keyword-number">22</div>
+    <h2 class="keyword-title">📌 from</h2>
+    <div class="mechanism">
+        <h3>الآلية:</h3>
+        <p>أدخل جزءاً محدداً من مكتبة</p>
+    </div>
+    <div class="code-example">
+<span class="keyword">from</span> <span class="variable">math</span> <span class="keyword">import</span> <span class="variable">pi</span>, <span class="variable">sin</span>  <span class="comment"># 📦 أدخل pi و sin فقط</span><br>
+<span class="keyword">print</span>(<span class="variable">pi</span>)  <span class="comment"># ✅ 3.14159</span>
+    </div>
+</div>
+
+<!-- Keyword 23: global -->
+<div class="keyword-card">
+    <div class="keyword-number">23</div>
+    <h2 class="keyword-title">📌 global</h2>
+    <div class="mechanism">
+        <h3>الآلية:</h3>
+        <p>غيّر متغيراً عاماً من داخل دالة</p>
+    </div>
+    <div class="code-example">
+<span class="variable">counter</span> = <span class="number">0</span><br><br>
+<span class="keyword">def</span> <span class="function">increment_counter</span>():<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">global</span> <span class="variable">counter</span>  <span class="comment"># 🌍 هذا المتغير خارج الدالة</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="variable">counter</span> += <span class="number">1</span><br><br>
+<span class="function">increment_counter</span>()<br>
+<span class="keyword">print</span>(<span class="variable">counter</span>)  <span class="comment"># ✅ 1</span>
+    </div>
+</div>
+
+<!-- Keyword 24: nonlocal -->
+<div class="keyword-card">
+    <div class="keyword-number">24</div>
+    <h2 class="keyword-title">📌 nonlocal</h2>
+    <div class="mechanism">
+        <h3>الآلية:</h3>
+        <p>غيّر متغيراً في الدالة الأم</p>
+    </div>
+    <div class="code-example">
+<span class="keyword">def</span> <span class="function">outer</span>():<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="variable">x</span> = <span class="number">10</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">def</span> <span class="function">inner</span>():<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">nonlocal</span> <span class="variable">x</span>  <span class="comment"># 🏠 هذا المتغير في الدالة الأم</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="variable">x</span> = <span class="number">20</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="function">inner</span>()<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">print</span>(<span class="variable">x</span>)  <span class="comment"># ✅ 20</span>
+    </div>
+</div>
+            
+            
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Keywords 25-40</title>
+    <style>
+        /* Same CSS as before */
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
+        body { background: linear-gradient(135deg, #1a2980, #26d0ce); color: #333; padding: 20px; }
+        .container { max-width: 1200px; margin: 0 auto; background: rgba(255,255,255,0.95); border-radius: 20px; padding: 30px; }
+        .header { text-align: center; margin-bottom: 40px; }
+        .header h1 { color: #1a2980; font-size: 2.8rem; margin-bottom: 10px; }
+        .keywords-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 25px; }
+        .keyword-card { background: white; border-radius: 15px; padding: 25px; box-shadow: 0 5px 15px rgba(0,0,0,0.08); border-left: 5px solid #26d0ce; }
+        .keyword-number { position: absolute; top: 15px; left: 15px; background: #1a2980; color: white; width: 35px; height: 35px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; }
+        .keyword-title { color: #1a2980; font-size: 1.6rem; margin-bottom: 15px; padding-right: 40px; }
+        .mechanism { background: #f8f9fa; padding: 15px; border-radius: 10px; margin-bottom: 20px; border-right: 3px solid #26d0ce; }
+        .mechanism h3 { color: #26d0ce; margin-bottom: 8px; font-size: 1.2rem; }
+        .code-example { background: #2d3748; color: #e2e8f0; padding: 20px; border-radius: 10px; font-family: 'Courier New', monospace; font-size: 0.95rem; overflow-x: auto; margin-top: 10px; position: relative; }
+        .code-example::before { content: "🐍 Python"; position: absolute; top: 5px; left: 10px; font-size: 0.8rem; color: #26d0ce; }
+        .comment { color: #81e6d9; }
+        .keyword { color: #ff6b6b; font-weight: bold; }
+        .string { color: #68d391; }
+        .number { color: #d6bcfa; }
+        .variable { color: #4fd1c7; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+
+        </div>
+        
+        <div class="keywords-grid">
+            
+            
+<!-- Keyword 25: in -->
+<div class="keyword-card">
+    <div class="keyword-number">25</div>
+    <h2 class="keyword-title">📌 in</h2>
+    <div class="mechanism">
+        <h3>الآلية:</h3>
+        <p>يتحقق من وجود عنصر في متتابعة</p>
+    </div>
+    <div class="code-example">
+<span class="variable">numbers</span> = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]<br>
+<span class="keyword">print</span>(<span class="number">3</span> <span class="keyword">in</span> <span class="variable">numbers</span>)  <span class="comment"># ✅ True - الرقم 3 موجود في القائمة</span><br>
+<span class="keyword">print</span>(<span class="number">10</span> <span class="keyword">in</span> <span class="variable">numbers</span>)  <span class="comment"># ✅ False - الرقم 10 غير موجود</span>
+    </div>
+</div>
+
+<!-- Keyword 26: is -->
+<div class="keyword-card">
+    <div class="keyword-number">26</div>
+    <h2 class="keyword-title">📌 is</h2>
+    <div class="mechanism">
+        <h3>الآلية:</h3>
+        <p>يتحقق من الهوية - إذا كان المتغيران يشيران إلى نفس الكائن</p>
+    </div>
+    <div class="code-example">
+<span class="variable">list1</span> = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]<br>
+<span class="variable">list2</span> = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]<br>
+<span class="variable">list3</span> = <span class="variable">list1</span><br><br>
+<span class="keyword">print</span>(<span class="variable">list1</span> <span class="keyword">is</span> <span class="variable">list2</span>)  <span class="comment"># ✅ False - كائنان مختلفان في الذاكرة</span><br>
+<span class="keyword">print</span>(<span class="variable">list1</span> <span class="keyword">is</span> <span class="variable">list3</span>)  <span class="comment"># ✅ True - نفس الكائن في الذاكرة</span>
+    </div>
+</div>
+
+<!-- Keyword 27: del -->
+<div class="keyword-card">
+    <div class="keyword-number">27</div>
+    <h2 class="keyword-title">📌 del</h2>
+    <div class="mechanism">
+        <h3>الآلية:</h3>
+        <p>يحذف متغيراً أو عنصراً من مجموعة</p>
+    </div>
+    <div class="code-example">
+<span class="variable">numbers</span> = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]<br>
+<span class="keyword">del</span> <span class="variable">numbers</span>[<span class="number">2</span>]  <span class="comment"># 🗑️ احذف العنصر الثالث (الرقم 3)</span><br>
+<span class="keyword">print</span>(<span class="variable">numbers</span>)  <span class="comment"># ✅ [1, 2, 4, 5]</span>
+    </div>
+</div>
+
+<!-- Keyword 28: range -->
+<div class="keyword-card">
+    <div class="keyword-number">28</div>
+    <h2 class="keyword-title">📌 range</h2>
+    <div class="mechanism">
+        <h3>الآلية:</h3>
+        <p>يولد سلسلة من الأرقام</p>
+    </div>
+    <div class="code-example">
+<span class="keyword">for</span> <span class="variable">i</span> <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">3</span>):  <span class="comment"># 🔢 0, 1, 2</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">print</span>(<span class="variable">i</span>)<br><br>
+<span class="keyword">for</span> <span class="variable">i</span> <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">2</span>, <span class="number">5</span>):  <span class="comment"># 🔢 2, 3, 4</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">print</span>(<span class="variable">i</span>)<br><br>
+<span class="keyword">for</span> <span class="variable">i</span> <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">10</span>, <span class="number">0</span>, -<span class="number">2</span>):  <span class="comment"># 🔢 10, 8, 6, 4, 2</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">print</span>(<span class="variable">i</span>)
+    </div>
+</div>
+
+卍
+<!-- Keyword 29: zip -->
+<div class="keyword-card">
+    <div class="keyword-number">29</div>
+    <h2 class="keyword-title">📌 zip</h2>
+    <div class="mechanism">
+        <h3>الآلية:</h3>
+        <p>يجمع متتابعات معاً</p>
+    </div>
+    <div class="code-example">
+<span class="variable">names</span> = [<span class="string">"Ahmed"</span>, <span class="string">"Sara"</span>]<br>
+<span class="variable">ages</span> = [<span class="number">25</span>, <span class="number">30</span>]<br><br>
+<span class="keyword">for</span> <span class="variable">name</span>, <span class="variable">age</span> <span class="keyword">in</span> <span class="keyword">zip</span>(<span class="variable">names</span>, <span class="variable">ages</span>):<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">print</span>(<span class="variable">name</span>, <span class="variable">age</span>)  <span class="comment"># ✅ أحمد 25، سارة 30</span>
+    </div>
+</div>
+
+<!-- Keyword 30: enumerate -->
+<div class="keyword-card">
+    <div class="keyword-number">30</div>
+    <h2 class="keyword-title">📌 enumerate</h2>
+    <div class="mechanism">
+        <h3>الآلية:</h3>
+        <p>يعطي الفهرس والقيمة معاً</p>
+    </div>
+    <div class="code-example">
+<span class="variable">days</span> = [<span class="string">"Saturday"</span>, <span class="string">"Sunday"</span>, <span class="string">"Monday"</span>]<br>
+<span class="keyword">for</span> <span class="variable">index</span>, <span class="variable">day</span> <span class="keyword">in</span> <span class="keyword">enumerate</span>(<span class="variable">days</span>):<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">print</span>(<span class="variable">index</span>, <span class="variable">day</span>)  <span class="comment"># ✅ 0 Saturday، 1 Sunday، 2 Monday</span>
+    </div>
+</div>
+
+<!-- Keyword 31: map -->
+<div class="keyword-card">
+    <div class="keyword-number">31</div>
+    <h2 class="keyword-title">📌 map</h2>
+    <div class="mechanism">
+        <h3>الآلية:</h3>
+        <p>يطبق دالة على جميع عناصر المتتابعة</p>
+    </div>
+    <div class="code-example">
+<span class="variable">numbers</span> = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]<br>
+<span class="variable">doubled</span> = <span class="keyword">list</span>(<span class="keyword">map</span>(<span class="keyword">lambda</span> <span class="variable">x</span>: <span class="variable">x</span> * <span class="number">2</span>, <span class="variable">numbers</span>))<br>
+<span class="keyword">print</span>(<span class="variable">doubled</span>)  <span class="comment"># ✅ [2, 4, 6] - كل رقم ضرب في 2</span>
+    </div>
+</div>
+
+<!-- Keyword 32: filter -->
+<div class="keyword-card">
+    <div class="keyword-number">32</div>
+    <h2 class="keyword-title">📌 filter</h2>
+    <div class="mechanism">
+        <h3>الآلية:</h3>
+        <p>يرشح العناصر بناءً على شرط</p>
+    </div>
+    <div class="code-example">
+<span class="variable">numbers</span> = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>]<br>
+<span class="variable">evens</span> = <span class="keyword">list</span>(<span class="keyword">filter</span>(<span class="keyword">lambda</span> <span class="variable">x</span>: <span class="variable">x</span> % <span class="number">2</span> == <span class="number">0</span>, <span class="variable">numbers</span>))<br>
+<span class="keyword">print</span>(<span class="variable">evens</span>)  <span class="comment"># ✅ [2, 4, 6] - الأرقام الزوجية فقط</span>
+    </div>
+</div>
+
+<!-- Keyword 33: open -->
+<div class="keyword-card">
+    <div class="keyword-number">33</div>
+    <h2 class="keyword-title">📌 open</h2>
+    <div class="mechanism">
+
+
+<h3>الآلية:</h3>
+        <p>يفتح ملفاً للقراءة أو الكتابة</p>
+    </div>
+    <div class="code-example">
+<span class="variable">file</span> = <span class="keyword">open</span>(<span class="string">"data.txt"</span>, <span class="string">"w"</span>)  <span class="comment"># ✏️ افتح الملف للكتابة</span><br>
+<span class="variable">file</span>.write(<span class="string">"Hello World"</span>)<br>
+<span class="variable">file</span>.close()  <span class="comment"># 🔒 أغلق الملف</span>
+    </div>
+</div>
+
+<!-- Keyword 34: and -->
+<div class="keyword-card">
+    <div class="keyword-number">34</div>
+    <h2 class="keyword-title">📌 and</h2>
+    <div class="mechanism">
+        <h3>الآلية:</h3>
+        <p>و المنطقية - تكون True إذا كان كلا الشرطين صحيحين</p>
+    </div>
+    <div class="code-example">
+<span class="variable">age</span> = <span class="number">20</span><br>
+<span class="variable">graduated</span> = <span class="keyword">True</span><br>
+<span class="keyword">if</span> <span class="variable">age</span> >= <span class="number">18</span> <span class="keyword">and</span> <span class="variable">graduated</span>:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">print</span>(<span class="string">"Can apply for job"</span>)  <span class="comment"># ✅ كلاهما صحيح</span>
+    </div>
+</div>
+
+<!-- Keyword 35: or -->
+<div class="keyword-card">
+    <div class="keyword-number">35</div>
+    <h2 class="keyword-title">📌 or</h2>
+    <div class="mechanism">
+        <h3>الآلية:</h3>
+        <p>أو المنطقية - تكون True إذا كان أحد الشرطين صحيحاً</p>
+    </div>
+    <div class="code-example">
+<span class="variable">day</span> = <span class="string">"Saturday"</span><br>
+<span class="keyword">if</span> <span class="variable">day</span> == <span class="string">"Saturday"</span> <span class="keyword">or</span> <span class="variable">day</span> == <span class="string">"Sunday"</span>:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">print</span>(<span class="string">"Weekend"</span>)  <span class="comment"># ✅ أحد الشرطين صحيح</span>
+    </div>
+</div>
+
+<!-- Keyword 36: not -->
+<div class="keyword-card">
+    <div class="keyword-number">36</div>
+    <h2 class="keyword-title">📌 not</h2>
+    <div class="mechanism">
+        <h3>الآلية:</h3>
+        <p>نفي منطقي - يعكس القيمة المنطقية</p>
+    </div>
+    <div class="code-example">
+<span class="variable">raining</span> = <span class="keyword">False</span><br>
+<span class="keyword">if</span> <span class="keyword">not</span> <span class="variable">raining</span>:  <span class="comment"># not False = True</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">print</span>(<span class="string">"Nice weather"</span>)  <span class="comment"># ✅ الطقس جميل</span>
+    </div>
+</div>
+
+<!-- Keyword 37: None -->
+<div class="keyword-card">
+    <div class="keyword-number">37</div>
+    <h2 class="keyword-title">📌 None</h2>
+    <div class="mechanism">
+        <h3>الآلية:</h3>
+        <p>يمثل عدم وجود قيمة</p>
+    </div>
+    <div class="code-example">
+<span class="variable">result</span> = <span class="keyword">None</span>  <span class="comment"># ⚫ لا توجد قيمة</span><br>
+<span class="keyword">if</span> <span class="variable">result</span> <span class="keyword">is</span> <span class="keyword">None</span>:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">print</span>(<span class="string">"Result not calculated yet"</span>)  <span class="comment"># ✅ لم تحسب النتيجة بعد</span>
+    </div>
+</div>
+
+<!-- Keyword 38: True / False -->
+<div class="keyword-card">
+    <div class="keyword-number">38</div>
+    <h2 class="keyword-title">📌 True / False</h2>
+    <div class="mechanism">
+        <h3>الآلية:</h3>
+        <p>قيمتان ثابتتان للصح والخطأ</p>
+    </div>
+    <div class="code-example">
+<span class="variable">power_on</span> = <span class="keyword">True</span><br>
+
+Haider卍, [05/01/2026 12:51 م]
+<span class="variable">power_off</span> = <span class="keyword">False</span><br><br>
+<span class="keyword">if</span> <span class="variable">power_on</span>:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">print</span>(<span class="string">"System is running"</span>)  <span class="comment"># ✅ النظام يعمل</span>
+    </div>
+</div>
+
+<!-- Keyword 39: class -->
+<div class="keyword-card">
+    <div class="keyword-number">39</div>
+    <h2 class="keyword-title">📌 class</h2>
+    <div class="mechanism">
+        <h3>الآلية:</h3>
+        <p>يعرف صنفاً (قالب كائن)</p>
+    </div>
+    <div class="code-example">
+<span class="keyword">class</span> <span class="variable">Student</span>:  <span class="comment"># 🏗️ تعريف الصنف</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">def</span> <span class="function">init</span>(<span class="keyword">self</span>, <span class="variable">name</span>):<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">self</span>.<span class="variable">name</span> = <span class="variable">name</span><br><br>
+<span class="variable">s</span> = <span class="variable">Student</span>(<span class="string">"Ahmed"</span>)<br>
+<span class="keyword">print</span>(<span class="variable">s</span>.<span class="variable">name</span>)  <span class="comment"># ✅ أحمد</span>
+    </div>
+</div>
+
+<!-- Keyword 40: self -->
+<div class="keyword-card">
+    <div class="keyword-number">40</div>
+    <h2 class="keyword-title">📌 self</h2>
+    <div class="mechanism">
+        <h3>الآلية:</h3>
+        <p>يمثل النسخة الحالية من الكائن</p>
+    </div>
+    <div class="code-example">
+<span class="keyword">class</span> <span class="variable">Person</span>:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">def</span> <span class="function">introduce</span>(<span class="keyword">self</span>):  <span class="comment"># 🤝 self هو الشخص نفسه</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">print</span>(<span class="string">"I am"</span>, <span class="keyword">self</span>.<span class="variable">name</span>)
+    </div>
+</div>
+卍 
+<!-- Keyword 41: init -->
+<div class="keyword-card">
+    <div class="keyword-number">41</div>
+    <h2 class="keyword-title">📌 init</h2>
+    <div class="mechanism">
+        <h3>الآلية:</h3>
+        <p>منشئ الكائن - ينفذ عند إنشاء كائن جديد</p>
+    </div>
+    <div class="code-example">
+<span class="keyword">class</span> <span class="variable">Car</span>:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">def</span> <span class="function">init</span>(<span class="keyword">self</span>, <span class="variable">color</span>):  <span class="comment"># 🚗 ينفذ عند إنشاء السيارة</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">self</span>.<span class="variable">color</span> = <span class="variable">color</span><br><br>
+<span class="variable">c</span> = <span class="variable">Car</span>(<span class="string">"red"</span>)<br>
+<span class="keyword">print</span>(<span class="variable">c</span>.<span class="variable">color</span>)  <span class="comment"># ✅ أحمر</span>
+    </div>
+</div>
+
+<!-- Keyword 42: *args -->
+<div class="keyword-card">
+    <div class="keyword-number">42</div>
+    <h2 class="keyword-title">📌 *args</h2>
+    <div class="mechanism">
+        <h3>الآلية:</h3>
+        <p>عدد غير محدد من المعطيات (تأتي كـ tuple)</p>
+    </div>
+    <div class="code-example">
+<span class="keyword">def</span> <span class="function">sum_numbers</span>(*<span class="variable">args</span>):  <span class="comment"># * تعني "كمية غير معروفة"</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="variable">total</span> = <span class="number">0</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">for</span> <span class="variable">num</span> <span class="keyword">in</span> <span class="variable">args</span>:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="variable">total</span> += <span class="variable">num</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">return</span> <span class="variable">total</span><br><br>
+<span class="keyword">print</span>(<span class="function">sum_numbers</span>(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>))  <span class="comment"># ✅ 6</span>
+    </div>
+</div>
+
+<!-- Keyword 43: **kwargs -->
+<div class="keyword-card">
+    <div class="keyword-number">43</div>
+    <h2 class="keyword-title">📌 **kwargs</h2>
+    <div class="mechanism">
+        <h3>الآلية:</h3>
+        <p>معطيات مسماة (تأتي كـ dictionary)</p>
+    </div>
+    <div class="code-example">
+<span class="keyword">def</span> <span class="function">show_info</span>(<span class="variable">kwargs</span>):  <span class="comment">#  تعني "معطيات مفتاحية"</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">for</span> <span class="variable">key</span>, <span class="variable">value</span> <span class="keyword">in</span> <span class="variable">kwargs</span>.items():<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">print</span>(<span class="variable">key</span>, <span class="string">":"</span>, <span class="variable">value</span>)<br><br>
+<span class="function">show_info</span>(name=<span class="string">"Ahmed"</span>, age=<span class="number">25</span>, city=<span class="string">"Baghdad"</span>)<br>
+<span class="comment"># ✅ name : Ahmed</span><br>
+<span class="comment"># ✅ age : 25</span><br>
+<span class="comment"># ✅ city : Baghdad</span>
+    </div>
+</div>
+
+<!-- Keyword 44: @decorator -->
+<div class="keyword-card">
+    <div class="keyword-number">44</div>
+    <h2 class="keyword-title">📌 @decorator</h2>
+    <div class="mechanism">
+        <h3>الآلية:</h3>
+        <p>ديكوراتور - يعدل الدالة بدون تغيير كودها</p>
+    </div>
+    <div class="code-example">
+<span class="keyword">def</span> <span class="function">my_decorator</span>(<span class="variable">func</span>):<br>
+
+Haider卍, [05/01/2026 12:55 م]
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">def</span> <span class="function">wrapper</span>():<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">print</span>(<span class="string">"Before function"</span>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="variable">func</span>()<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">print</span>(<span class="string">"After function"</span>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">return</span> <span class="variable">wrapper</span><br><br>
+<span class="keyword">@</span><span class="function">my_decorator</span><br>
+<span class="keyword">def</span> <span class="function">say_hello</span>():<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">print</span>(<span class="string">"Hello!"</span>)<br><br>
+<span class="function">say_hello</span>()<br>
+<span class="comment"># ✅ Before function</span><br>
+<span class="comment"># ✅ Hello!</span><br>
+<span class="comment"># ✅ After function</span>
+    </div>
+</div>
+
+<!-- Keyword 45: -> -->
+<div class="keyword-card">
+    <div class="keyword-number">45</div>
+    <h2 class="keyword-title">📌 -></h2>
+    <div class="mechanism">
+        <h3>الآلية:</h3>
+        <p>تلميح النوع - يبين نوع القيمة المرجعة</p>
+    </div>
+    <div class="code-example">
+<span class="keyword">def</span> <span class="function">add</span>(<span class="variable">a</span>: <span class="keyword">int</span>, <span class="variable">b</span>: <span class="keyword">int</span>) -> <span class="keyword">int</span>:  <span class="comment"># ⏩ سترجع int</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">return</span> <span class="variable">a</span> + <span class="variable">b</span><br><br>
+<span class="keyword">print</span>(<span class="function">add</span>(<span class="number">5</span>, <span class="number">3</span>))  <span class="comment"># ✅ 8</span>
+    </div>
+</div>
+
+<!-- Keyword 46: dict() / list() / tuple() / set() -->
+<div class="keyword-card">
+    <div class="keyword-number">46</div>
+    <h2 class="keyword-title">📌 dict() / list() / tuple() / set()</h2>
+    <div class="mechanism">
+        <h3>الآلية:</h3>
+        <p>منشئات هياكل البيانات</p>
+    </div>
+    <div class="code-example">
+<span class="variable">dictionary</span> = <span class="keyword">dict</span>(name=<span class="string">"Ahmed"</span>, age=<span class="number">25</span>)  <span class="comment"># 🗺️ أنشئ قاموس</span><br>
+<span class="variable">my_list</span> = <span class="keyword">list</span>([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>])  <span class="comment"># 📋 أنشئ قائمة</span><br>
+<span class="variable">my_set</span> = <span class="keyword">set</span>([<span class="number">1</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">3</span>])  <span class="comment"># 🎯 أنشئ مجموعة (تزيل التكرار)</span><br>
+<span class="keyword">print</span>(<span class="variable">my_set</span>)  <span class="comment"># ✅ {1, 2, 3}</span>
+    </div>
+</div>
+
+<!-- Keyword 47: items() / keys() / values() -->
+<div class="keyword-card">
+    <div class="keyword-number">47</div>
+    <h2 class="keyword-title">📌 items() / keys() / values()</h2>
+    <div class="mechanism">
+        <h3>الآلية:</h3>
+        <p>طرق القاموس</p>
+    </div>
+    <div class="code-example">
+<span class="variable">info</span> = {<span class="string">"name"</span>: <span class="string">"Sara"</span>, <span class="string">"age"</span>: <span class="number">30</span>}<br><br>
+<span class="keyword">for</span> <span class="variable">key</span>, <span class="variable">value</span> <span class="keyword">in</span> <span class="variable">info</span>.items():  <span class="comment"># 🔑🗝️ المفتاح والقيمة</span><br>
+
+Haider卍, [05/01/2026 12:55 م]
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">print</span>(<span class="variable">key</span>, <span class="variable">value</span>)<br><br>
+<span class="keyword">print</span>(<span class="keyword">list</span>(<span class="variable">info</span>.keys()))  <span class="comment"># ✅ ['name', 'age']</span><br>
+<span class="keyword">print</span>(<span class="keyword">list</span>(<span class="variable">info</span>.values()))  <span class="comment"># ✅ ['Sara', 30]</span>
+    </div>
+</div>
+
+<!-- Keyword 48: sorted() -->
+<div class="keyword-card">
+    <div class="keyword-number">48</div>
+    <h2 class="keyword-title">📌 sorted()</h2>
+    <div class="mechanism">
+        <h3>الآلية:</h3>
+        <p>يرتب متتابعة</p>
+    </div>
+    <div class="code-example">
+<span class="variable">numbers</span> = [<span class="number">3</span>, <span class="number">1</span>, <span class="number">4</span>, <span class="number">2</span>]<br>
+<span class="variable">sorted_nums</span> = <span class="keyword">sorted</span>(<span class="variable">numbers</span>)  <span class="comment"># 📈 رتب تصاعدياً</span><br>
+<span class="keyword">print</span>(<span class="variable">sorted_nums</span>)  <span class="comment"># ✅ [1, 2, 3, 4]</span>
+    </div>
+</div>
+
+<!-- Keyword 49: len() -->
+<div class="keyword-card">
+    <div class="keyword-number">49</div>
+    <h2 class="keyword-title">📌 len()</h2>
+    <div class="mechanism">
+        <h3>الآلية:</h3>
+        <p>طول المتتابعة</p>
+    </div>
+    <div class="code-example">
+<span class="variable">word</span> = <span class="string">"Hello"</span><br>
+<span class="keyword">print</span>(<span class="keyword">len</span>(<span class="variable">word</span>))  <span class="comment"># ✅ 5 أحرف</span>
+    </div>
+</div>
+
+<!-- Keyword 50: type() -->
+<div class="keyword-card">
+    <div class="keyword-number">50</div>
+    <h2 class="keyword-title">📌 type()</h2>
+    <div class="mechanism">
+        <h3>الآلية:</h3>
+        <p>نوع المتغير</p>
+    </div>
+    <div class="code-example">
+<span class="variable">x</span> = <span class="number">5</span><br>
+<span class="variable">y</span> = <span class="string">"text"</span><br>
+<span class="keyword">print</span>(<span class="keyword">type</span>(<span class="variable">x</span>))  <span class="comment"># ✅ &lt;class 'int'&gt;</span><br>
+<span class="keyword">print</span>(<span class="keyword">type</span>(<span class="variable">y</span>))  <span class="comment"># ✅ &lt;class 'str'&gt;</span>
+    </div>
+</div>
+
+<!-- Keyword 51: isinstance() -->
+<div class="keyword-card">
+    <div class="keyword-number">51</div>
+    <h2 class="keyword-title">📌 isinstance()</h2>
+    <div class="mechanism">
+        <h3>الآلية:</h3>
+        <p>يتحقق من نوع الكائن</p>
+    </div>
+    <div class="code-example">
+<span class="variable">x</span> = <span class="number">5</span><br>
+<span class="keyword">print</span>(<span class="keyword">isinstance</span>(<span class="variable">x</span>, <span class="keyword">int</span>))  <span class="comment"># ✅ True</span><br>
+<span class="keyword">print</span>(<span class="keyword">isinstance</span>(<span class="variable">x</span>, <span class="keyword">str</span>))  <span class="comment"># ✅ False</span>
+    </div>
+</div>
+
+<!-- Keyword 52: super() -->
+<div class="keyword-card">
+    <div class="keyword-number">52</div>
+    <h2 class="keyword-title">📌 super()</h2>
+    <div class="mechanism">
+        <h3>الآلية:</h3>
+        <p>استدعاء دالة من الصنف الأم</p>
+    </div>
+    <div class="code-example">
+<span class="keyword">class</span> <span class="variable">Animal</span>:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">def</span> <span class="function">sound</span>(<span class="keyword">self</span>):<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">print</span>(<span class="string">"Animal sound"</span>)<br><br>
+
+Haider卍, [05/01/2026 12:55 م]
+<span class="keyword">class</span> <span class="variable">Cat</span>(<span class="variable">Animal</span>):<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">def</span> <span class="function">sound</span>(<span class="keyword">self</span>):<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">super</span>().sound()  <span class="comment"># 📞 استدع الدالة من الصنف الأم</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">print</span>(<span class="string">"Meow"</span>)<br><br>
+<span class="variable">c</span> = <span class="variable">Cat</span>()<br>
+<span class="variable">c</span>.sound()<br>
+<span class="comment"># ✅ Animal sound</span><br>
+<span class="comment"># ✅ Meow</span>
+    </div>
+</div>
+
+<!-- Keyword 53: as -->
+<div class="keyword-card">
+    <div class="keyword-number">53</div>
+    <h2 class="keyword-title">📌 as</h2>
+    <div class="mechanism">
+        <h3>الآلية:</h3>
+        <p>تغيير اسم المستورد</p>
+    </div>
+    <div class="code-example">
+<span class="keyword">import</span> <span class="variable">math</span> <span class="keyword">as</span> <span class="variable">m</span>  <span class="comment"># 📛 غير اسم math إلى m</span><br>
+<span class="keyword">print</span>(<span class="variable">m</span>.sqrt(<span class="number">16</span>))  <span class="comment"># ✅ 4.0</span>
+    </div>
+</div>
+
+<!-- المشغلات التفصيلية -->
+<div class="keyword-card">
+    <div class="keyword-number">54</div>
+    <h2 class="keyword-title">📌 Relational Operators</h2>
+    <div class="mechanism">
+        <h3>المشغلات العلاقية:</h3>
+        <p>&gt;, &lt;, &gt;=, &lt;=, ==, !=</p>
+    </div>
+    <div class="code-example">
+<span class="variable">a</span> = <span class="number">10</span><br>
+<span class="variable">b</span> = <span class="number">5</span><br><br>
+<span class="keyword">print</span>(<span class="variable">a</span> &gt; <span class="variable">b</span>)   <span class="comment"># ✅ True - أكبر من</span><br>
+<span class="keyword">print</span>(<span class="variable">a</span> &lt; <span class="variable">b</span>)   <span class="comment"># ✅ False - أصغر من</span><br>
+<span class="keyword">print</span>(<span class="variable">a</span> &gt;= <span class="variable">b</span>)  <span class="comment"># ✅ True - أكبر من أو يساوي</span><br>
+<span class="keyword">print</span>(<span class="variable">a</span> &lt;= <span class="variable">b</span>)  <span class="comment"># ✅ False - أصغر من أو يساوي</span><br>
+<span class="keyword">print</span>(<span class="variable">a</span> == <span class="variable">b</span>)  <span class="comment"># ✅ False - يساوي</span><br>
+<span class="keyword">print</span>(<span class="variable">a</span> != <span class="variable">b</span>)  <span class="comment"># ✅ True - لا يساوي</span>
+    </div>
+</div>
+
+<!-- Logical Operators -->
+<div class="keyword-card">
+    <div class="keyword-number">55</div>
+    <h2 class="keyword-title">📌 Logical Operators</h2>
+    <div class="mechanism">
+        <h3>المشغلات المنطقية:</h3>
+        <p>and, or, not</p>
+    </div>
+    <div class="code-example">
+<span class="variable">age</span> = <span class="number">20</span><br>
+<span class="variable">has_license</span> = <span class="keyword">True</span><br><br>
+<span class="comment"># and - كل الشروط يجب أن تكون True</span><br>
+<span class="keyword">if</span> <span class="variable">age</span> &gt;= <span class="number">18</span> <span class="keyword">and</span> <span class="variable">has_license</span>:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">print</span>(<span class="string">"Can drive"</span>)  <span class="comment"># ✅</span><br><br>
+<span class="comment"># or - أحد الشروط على الأقل يجب أن يكون True</span><br>
+<span class="keyword">if</span> <span class="variable">age</span> &lt; <span class="number">12</span> <span class="keyword">or</span> <span class="variable">age</span> &gt; <span class="number">65</span>:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">print</span>(<span class="string">"Special fare"</span>)  <span class="comment"># ✅</span><br><br>
+<span class="comment"># not - يعكس القيمة المنطقية</span><br>
+<span class="variable">is_raining</span> = <span class="keyword">False</span><br>
+<span class="keyword">if</span> <span class="keyword">not</span> <span class="variable">is_raining</span>:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">print</span>(<span class="string">"No umbrella needed"</span>)  <span class="comment"># ✅</span>
+    </div>
+</div>
+
+<!-- Membership Operators -->
+<div class="keyword-card">
+    <div class="keyword-number">56</div>
+    <h2 class="keyword-title">📌 Membership Operators</h2>
+    <div class="mechanism">
+        <h3>مشغلات العضوية:</h3>
+        <p>in, not in</p>
+    </div>
+    <div class="code-example">
+<span class="variable">fruits</span> = [<span class="string">"apple"</span>, <span class="string">"banana"</span>, <span class="string">"orange"</span>]<br><br>
+<span class="comment"># in - يتحقق من وجود العنصر</span><br>
+<span class="keyword">print</span>(<span class="string">"apple"</span> <span class="keyword">in</span> <span class="variable">fruits</span>)    <span class="comment"># ✅ True - موجود</span><br>
+
+Haider卍, [05/01/2026 01:28 م]
+<span class="keyword">print</span>(<span class="string">"grape"</span> <span class="keyword">in</span> <span class="variable">fruits</span>)   <span class="comment"># ✅ False - غير موجود</span><br><br>
+<span class="comment"># not in - يتحقق من عدم وجود العنصر</span><br>
+<span class="keyword">print</span>(<span class="string">"grape"</span> <span class="keyword">not in</span> <span class="variable">fruits</span>)  <span class="comment"># ✅ True - غير موجود</span><br>
+<span class="keyword">print</span>(<span class="string">"apple"</span> <span class="keyword">not in</span> <span class="variable">fruits</span>) <span class="comment"># ✅ False - موجود</span>
+    </div>
+</div>
+
+<!-- Identity Operators -->
+<div class="keyword-card">
+    <div class="keyword-number">57</div>
+    <h2 class="keyword-title">📌 Identity Operators</h2>
+    <div class="mechanism">
+        <h3>مشغلات الهوية:</h3>
+        <p>is, is not</p>
+    </div>
+    <div class="code-example">
+<span class="variable">list1</span> = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]<br>
+<span class="variable">list2</span> = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]<br>
+<span class="variable">list3</span> = <span class="variable">list1</span><br><br>
+<span class="comment"># is - يتحقق من الهوية (نفس الكائن في الذاكرة)</span><br>
+<span class="keyword">print</span>(<span class="variable">list1</span> <span class="keyword">is</span> <span class="variable">list2</span>)     <span class="comment"># ✅ False - كائنان مختلفان</span><br>
+<span class="keyword">print</span>(<span class="variable">list1</span> <span class="keyword">is</span> <span class="variable">list3</span>)     <span class="comment"># ✅ True - نفس الكائن</span><br><br>
+<span class="comment"># is not - عكس is</span><br>
+<span class="keyword">print</span>(<span class="variable">list1</span> <span class="keyword">is not</span> <span class="variable">list2</span>) <span class="comment"># ✅ True - كائنان مختلفان</span><br>
+<span class="keyword">print</span>(<span class="variable">list1</span> <span class="keyword">is not</span> <span class="variable">list3</span>) <span class="comment"># ✅ False - نفس الكائن</span>
+    </div>
+</div>
+
+<!-- File Modes -->
+<div class="keyword-card">
+    <div class="keyword-number">58</div>
+    <h2 class="keyword-title">📌 File Modes</h2>
+    <div class="mechanism">
+        <h3>أنماط فتح الملفات:</h3>
+        <p>'r', 'w', 'a', 'r+', 'w+', 'a+', 'b'</p>
+    </div>
+    <div class="code-example">
+<span class="comment"># 📖 'r' - للقراءة فقط (افتراضي)</span><br>
+<span class="variable">file</span> = <span class="keyword">open</span>(<span class="string">"data.txt"</span>, <span class="string">"r"</span>)<br>
+<span class="variable">content</span> = <span class="variable">file</span>.read()<br>
+<span class="variable">file</span>.close()<br><br>
+
+<span class="comment"># ✏️ 'w' - للكتابة (يمسح المحتوى القديم)</span><br>
+<span class="variable">file</span> = <span class="keyword">open</span>(<span class="string">"data.txt"</span>, <span class="string">"w"</span>)<br>
+<span class="variable">file</span>.write(<span class="string">"New content"</span>)<br>
+<span class="variable">file</span>.close()<br><br>
+
+<span class="comment"># 📝 'a' - للإضافة في النهاية</span><br>
+<span class="variable">file</span> = <span class="keyword">open</span>(<span class="string">"data.txt"</span>, <span class="string">"a"</span>)<br>
+<span class="variable">file</span>.write(<span class="string">"\nAppended text"</span>)<br>
+<span class="variable">file</span>.close()<br><br>
+
+<span class="comment"># 🔄 'r+' - قراءة وكتابة</span><br>
+<span class="variable">file</span> = <span class="keyword">open</span>(<span class="string">"data.txt"</span>, <span class="string">"r+"</span>)<br>
+
+Haider卍, [05/01/2026 01:28 م]
+<span class="variable">file</span>.write(<span class="string">"Start"</span>)  <span class="comment"># يكتب من البداية</span><br>
+<span class="variable">content</span> = <span class="variable">file</span>.read()<br>
+<span class="variable">file</span>.close()<br><br>
+
+<span class="comment"># 🖼️ 'b' - ثنائي (للصور، الفيديو، الملفات)</span><br>
+<span class="keyword">with</span> <span class="keyword">open</span>(<span class="string">"image.jpg"</span>, <span class="string">"rb"</span>) <span class="keyword">as</span> <span class="variable">file</span>:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="variable">image_data</span> = <span class="variable">file</span>.read()
+    </div>
+</div>
+
+<!-- File Modes Summary -->
+<div class="keyword-card">
+    <div class="keyword-number">59</div>
+    <h2 class="keyword-title">📌 File Modes Summary</h2>
+    <div class="mechanism">
+        <h3>ملخص أنماط الملفات:</h3>
+        <p>دليل سريع لأنماط فتح الملفات</p>
+    </div>
+    <div class="code-example">
+<span class="comment"># 📋 جدول أنماط الملفات</span><br>
+<span class="keyword">print</span>(<span class="string">"File Modes Summary:"</span>)<br>
+<span class="keyword">print</span>(<span class="string">"-------------------"</span>)<br>
+<span class="keyword">print</span>(<span class="string">"'r'  - Read (default)"</span>)        <span class="comment"># للقراءة</span><br>
+<span class="keyword">print</span>(<span class="string">"'w'  - Write (truncate)"</span>)      <span class="comment"># للكتابة (يمسح القديم)</span><br>
+<span class="keyword">print</span>(<span class="string">"'a'  - Append"</span>)                <span class="comment"># للإضافة</span><br>
+<span class="keyword">print</span>(<span class="string">"'r+' - Read and Write"</span>)        <span class="comment"># قراءة وكتابة</span><br>
+<span class="keyword">print</span>(<span class="string">"'w+' - Write and Read"</span>)        <span class="comment"># كتابة وقراءة</span><br>
+<span class="keyword">print</span>(<span class="string">"'a+' - Append and Read"</span>)        <span class="comment"># إضافة وقراءة</span><br>
+<span class="keyword">print</span>(<span class="string">"'b'  - Binary mode"</span>)           <span class="comment"># للنمط الثنائي</span><br>
+<span class="keyword">print</span>(<span class="string">"'t'  - Text mode (default)"</span>)   <span class="comment"># للنمط النصي (افتراضي)</span><br><br>
+<span class="comment"># مثال عملي:</span><br>
+<span class="keyword">with</span> <span class="keyword">open</span>(<span class="string">"example.txt"</span>, <span class="string">"w"</span>) <span class="keyword">as</span> <span class="variable">f</span>:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="variable">f</span>.write(<span class="string">"Line 1\n"</span>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="variable">f</span>.write(<span class="string">"Line 2\n"</span>)<br>
+<span class="comment"># الملف يغلق تلقائياً</span>
+    </div>
+</div>
+
+<!-- التوابع المهمة - round() -->
+<div class="keyword-card">
+    <div class="keyword-number">60</div>
+    <h2 class="keyword-title">📌 round()</h2>
+    <div class="mechanism">
+        <h3>الآلية:</h3>
+        <p>يقرب الأرقام العشرية</p>
+    </div>
+    <div class="code-example">
+<span class="variable">num1</span> = <span class="number">3.14159</span><br>
+<span class="variable">num2</span> = <span class="number">2.71828</span><br><br>
+<span class="keyword">print</span>(<span class="keyword">round</span>(<span class="variable">num1</span>))        <span class="comment"># ✅ 3 - تقريب لأقرب عدد صحيح</span><br>
+<span class="keyword">print</span>(<span class="keyword">round</span>(<span class="variable">num2</span>, <span class="number">2</span>))     <span class="comment"># ✅ 2.72 - تقريب لخانتين عشريتين</span><br>
+<span class="keyword">print</span>(<span class="keyword">round</span>(<span class="variable">num1</span>, <span class="number">3</span>))     <span class="comment"># ✅ 3.142 - تقريب لثلاث خانات</span><br><br>
+<span class="comment"># مقارنة الأرقام العشرية باستخدام round</span><br>
+<span class="variable">x</span> = <span class="number">0.1</span> + <span class="number">0.1</span> + <span class="number">0.1</span><br>
+<span class="variable">y</span> = <span class="number">0.3</span><br>
+<span class="keyword">print</span>(<span class="keyword">round</span>(<span class="variable">x</span>, <span class="number">10</span>) == <span class="keyword">round</span>(<span class="variable">y</span>, <span class="number">10</span>))  <span class="comment"># ✅ True</span>
+    </div>
+</div>
+
+<!-- التوابع المهمة - enumerate() -->
+<div class="keyword-card">
+    <div class="keyword-number">61</div>
+    <h2 class="keyword-title">📌 enumerate()</h2>
+    <div class="mechanism">
+        <h3>الآلية:</h3>
+        <p>يرجع العنصر مع فهرسه</p>
+    </div>
+    <div class="code-example">
+<span class="variable">fruits</span> = [<span class="string">"apple"</span>, <span class="string">"banana"</span>, <span class="string">"cherry"</span>]<br><br>
+<span class="comment"># الطريقة التقليدية</span><br>
+<span class="keyword">for</span> <span class="variable">i</span> <span class="keyword">in</span> <span class="keyword">range</span>(<span class="keyword">len</span>(<span class="variable">fruits</span>)):<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">print</span>(<span class="variable">i</span>, <span class="variable">fruits</span>[<span class="variable">i</span>])<br><br>
+<span class="comment"># الطريقة الأفضل باستخدام enumerate</span><br>
+<span class="keyword">for</span> <span class="variable">index</span>, <span class="variable">fruit</span> <span class="keyword">in</span> <span class="keyword">enumerate</span>(<span class="variable">fruits</span>):<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">print</span>(<span class="variable">index</span>, <span class="variable">fruit</span>)  <span class="comment"># ✅ 0 apple, 1 banana, 2 cherry</span><br><br>
+<span class="comment"># enumerate مع بداية مختلفة</span><br>
+<span class="keyword">for</span> <span class="variable">index</span>, <span class="variable">fruit</span> <span class="keyword">in</span> <span class="keyword">enumerate</span>(<span class="variable">fruits</span>, <span class="number">1</span>):<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">print</span>(<span class="variable">index</span>, <span class="variable">fruit</span>)  <span class="comment"># ✅ 1 apple, 2 banana, 3 cherry</span>
+    </div>
+</div>
+
+<!-- التوابع المهمة - zip() -->
+<div class="keyword-card">
+    <div class="keyword-number">62</div>
+    <h2 class="keyword-title">📌 zip()</h2>
+    <div class="mechanism">
+        <h3>الآلية:</h3>
+        <p>يدمج متتابعات معاً</p>
+    </div>
+    <div class="code-example">
+<span class="variable">names</span> = [<span class="string">"Ali"</span>, <span class="string">"Sara"</span>, <span class="string">"Omar"</span>]<br>
+
+
+<span class="variable">ages</span> = [<span class="number">25</span>, <span class="number">30</span>, <span class="number">22</span>]<br>
+<span class="variable">cities</span> = [<span class="string">"Cairo"</span>, <span class="string">"Riyadh"</span>, <span class="string">"Dubai"</span>]<br><br>
+<span class="comment"># دمج ثلاثة قوائم معاً</span><br>
+<span class="keyword">for</span> <span class="variable">name</span>, <span class="variable">age</span>, <span class="variable">city</span> <span class="keyword">in</span> <span class="keyword">zip</span>(<span class="variable">names</span>, <span class="variable">ages</span>, <span class="variable">cities</span>):<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">print</span>(<span class="variable">name</span>, <span class="string">"is"</span>, <span class="variable">age</span>, <span class="string">"years old from"</span>, <span class="variable">city</span>)<br><br>
+<span class="comment"># تحويل zip إلى قائمة</span><br>
+<span class="variable">combined</span> = <span class="keyword">list</span>(<span class="keyword">zip</span>(<span class="variable">names</span>, <span class="variable">ages</span>))<br>
+<span class="keyword">print</span>(<span class="variable">combined</span>)  <span class="comment"># ✅ [('Ali', 25), ('Sara', 30), ('Omar', 22)]</span><br><br>
+<span class="comment"># فك الضغط باستخدام zip مع *</span><br>
+<span class="variable">pairs</span> = [(<span class="number">1</span>, <span class="string">'a'</span>), (<span class="number">2</span>, <span class="string">'b'</span>), (<span class="number">3</span>, <span class="string">'c'</span>)]<br>
+<span class="variable">numbers</span>, <span class="variable">letters</span> = <span class="keyword">zip</span>(*<span class="variable">pairs</span>)<br>
+<span class="keyword">print</span>(<span class="keyword">list</span>(<span class="variable">numbers</span>))  <span class="comment"># ✅ [1, 2, 3]</span>
+    </div>
+</div>
+
+<!-- التوابع المهمة - sorted() -->
+<div class="keyword-card">
+    <div class="keyword-number">63</div>
+    <h2 class="keyword-title">📌 sorted()</h2>
+    <div class="mechanism">
+        <h3>الآلية:</h3>
+        <p>يرتب العناصر ترتيباً تصاعدياً</p>
+    </div>
+    <div class="code-example">
+<span class="variable">numbers</span> = [<span class="number">3</span>, <span class="number">1</span>, <span class="number">4</span>, <span class="number">1</span>, <span class="number">5</span>, <span class="number">9</span>, <span class="number">2</span>]<br>
+<span class="variable">words</span> = [<span class="string">"banana"</span>, <span class="string">"apple"</span>, <span class="string">"cherry"</span>, <span class="string">"date"</span>]<br><br>
+<span class="comment"># ترتيب تصاعدي (افتراضي)</span><br>
+<span class="keyword">print</span>(<span class="keyword">sorted</span>(<span class="variable">numbers</span>))  <span class="comment"># ✅ [1, 1, 2, 3, 4, 5, 9]</span><br><br>
+<span class="comment"># ترتيب تنازلي</span><br>
+<span class="keyword">print</span>(<span class="keyword">sorted</span>(<span class="variable">numbers</span>, reverse=<span class="keyword">True</span>))  <span class="comment"># ✅ [9, 5, 4, 3, 2, 1, 1]</span><br><br>
+<span class="comment"># ترتيب النصوص أبجدياً</span><br>
+<span class="keyword">print</span>(<span class="keyword">sorted</span>(<span class="variable">words</span>))  <span class="comment"># ✅ ['apple', 'banana', 'cherry', 'date']</span><br><br>
+<span class="comment"># ترتيب حسب الطول</span><br>
+<span class="keyword">print</span>(<span class="keyword">sorted</span>(<span class="variable">words</span>, key=<span class="keyword">len</span>))  <span class="comment"># ✅ ['date', 'apple', 'banana', 'cherry']</span><br><br>
+<span class="comment"># sorted() لا يغير القائمة الأصلية</span><br>
+<span class="keyword">print</span>(<span class="variable">numbers</span>)  <span class="comment"># ✅ [3, 1, 4, 1, 5, 9, 2] (لم تتغير)</span>
+    </div>
+</div>
+
+Haider卍, [05/01/2026 01:35 م]
+<!-- التوابع المهمة - reversed() -->
+<div class="keyword-card">
+    <div class="keyword-number">64</div>
+    <h2 class="keyword-title">📌 reversed()</h2>
+    <div class="mechanism">
+        <h3>الآلية:</h3>
+        <p>يعكس ترتيب العناصر</p>
+    </div>
+    <div class="code-example">
+<span class="variable">numbers</span> = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]<br>
+<span class="variable">text</span> = <span class="string">"Python"</span><br><br>
+<span class="comment"># عكس قائمة</span><br>
+<span class="keyword">for</span> <span class="variable">num</span> <span class="keyword">in</span> <span class="keyword">reversed</span>(<span class="variable">numbers</span>):<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">print</span>(<span class="variable">num</span>, end=<span class="string">" "</span>)  <span class="comment"># ✅ 5 4 3 2 1</span><br><br>
+<span class="comment"># تحويل reversed إلى قائمة</span><br>
+<span class="variable">reversed_list</span> = <span class="keyword">list</span>(<span class="keyword">reversed</span>(<span class="variable">numbers</span>))<br>
+<span class="keyword">print</span>(<span class="variable">reversed_list</span>)  <span class="comment"># ✅ [5, 4, 3, 2, 1]</span><br><br>
+<span class="comment"># عكس النصوص</span><br>
+<span class="keyword">for</span> <span class="variable">char</span> <span class="keyword">in</span> <span class="keyword">reversed</span>(<span class="variable">text</span>):<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">print</span>(<span class="variable">char</span>, end=<span class="string">""</span>)  <span class="comment"># ✅ nohtyP</span><br><br>
+<span class="comment"># reversed() لا يغير الأصل</span><br>
+<span class="keyword">print</span>(<span class="string">"\nOriginal:"</span>, <span class="variable">numbers</span>)  <span class="comment"># ✅ [1, 2, 3, 4, 5]</span>
+    </div>
+</div>
+
+<!-- Closures -->
+<div class="keyword-card">
+    <div class="keyword-number">65</div>
+    <h2 class="keyword-title">📌 Closures (الإغلاقات)</h2>
+    <div class="mechanism">
+        <h3>الآلية:</h3>
+        <p>دالة داخلية تتذكر متغيرات الدالة الخارجية حتى بعد انتهائها</p>
+    </div>
+    <div class="code-example">
+<span class="keyword">def</span> <span class="function">outer_function</span>(<span class="variable">message</span>):<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="variable">msg</span> = <span class="variable">message</span>  <span class="comment"># متغير في الدالة الخارجية</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">def</span> <span class="function">inner_function</span>():<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">return</span> <span class="string">"Message: "</span> + <span class="variable">msg</span>  <span class="comment"># تتذكر المتغير msg</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">return</span> <span class="function">inner_function</span>  <span class="comment"># ترجع الدالة الداخلية</span><br><br>
+<span class="variable">my_func</span> = <span class="function">outer_function</span>(<span class="string">"Hello"</span>)<br>
+<span class="keyword">print</span>(<span class="variable">my_func</span>())  <span class="comment"># ✅ Message: Hello</span><br><br>
+<span class="comment"># مثال عملي: عداد</span><br>
+<span class="keyword">def</span> <span class="function">counter</span>(<span class="variable">start</span>):<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="variable">count</span> = <span class="variable">start</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">def</span> <span class="function">increment</span>():<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">nonlocal</span> <span class="variable">count</span><br>
+
+Haider卍, [05/01/2026 01:35 م]
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="variable">count</span> += <span class="number">1</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">return</span> <span class="variable">count</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">return</span> <span class="function">increment</span><br><br>
+<span class="variable">c</span> = <span class="function">counter</span>(<span class="number">10</span>)<br>
+<span class="keyword">print</span>(<span class="variable">c</span>())  <span class="comment"># ✅ 11</span><br>
+<span class="keyword">print</span>(<span class="variable">c</span>())  <span class="comment"># ✅ 12</span><br>
+<span class="keyword">print</span>(<span class="variable">c</span>())  <span class="comment"># ✅ 13</span>
+    </div>
+</div>
+
+<!-- Recursion -->
+<div class="keyword-card">
+    <div class="keyword-number">66</div>
+    <h2 class="keyword-title">📌 Recursion (التكرار الذاتي)</h2>
+    <div class="mechanism">
+        <h3>الآلية:</h3>
+        <p>دالة تستدعي نفسها، تحتاج لحالة أساسية للتوقف</p>
+    </div>
+    <div class="code-example">
+<span class="comment"># حساب المضروب (factorial)</span><br>
+<span class="keyword">def</span> <span class="function">factorial</span>(<span class="variable">n</span>):<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span> <span class="variable">n</span> == <span class="number">1</span>:  <span class="comment"># الحالة الأساسية</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">return</span> <span class="number">1</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">else</span>:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">return</span> <span class="variable">n</span> * <span class="function">factorial</span>(<span class="variable">n</span> - <span class="number">1</span>)  <span class="comment"># استدعاء ذاتي</span><br><br>
+<span class="keyword">print</span>(<span class="function">factorial</span>(<span class="number">5</span>))  <span class="comment"># ✅ 120 (5! = 5×4×3×2×1)</span><br><br>
+<span class="comment"># متتابعة فيبوناتشي</span><br>
+<span class="keyword">def</span> <span class="function">fibonacci</span>(<span class="variable">n</span>):<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span> <span class="variable">n</span> &lt;= <span class="number">1</span>:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">return</span> <span class="variable">n</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">else</span>:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">return</span> <span class="function">fibonacci</span>(<span class="variable">n</span>-<span class="number">1</span>) + <span class="function">fibonacci</span>(<span class="variable">n</span>-<span class="number">2</span>)<br><br>
+<span class="keyword">for</span> <span class="variable">i</span> <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">10</span>):<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">print</span>(<span class="function">fibonacci</span>(<span class="variable">i</span>), end=<span class="string">" "</span>)  <span class="comment"># ✅ 0 1 1 2 3 5 8 13 21 34</span>
+    </div>
+</div>
+
+<!-- Generators -->
+<div class="keyword-card">
+    <div class="keyword-number">67</div>
+    <h2 class="keyword-title">📌 Generators (المولدات)</h2>
+    <div class="mechanism">
+        <h3>الآلية:</h3>
+        <p>تنتج قيماً واحدة تلو الأخرى، توفر الذاكرة</p>
+    </div>
+    <div class="code-example">
+<span class="comment"># مولد باستخدام yield</span><br>
+<span class="keyword">def</span> <span class="function">countdown</span>(<span class="variable">n</span>):<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">while</span> <span class="variable">n</span> &gt; <span class="number">0</span>:<br>
+
+卍
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">yield</span> <span class="variable">n</span>  <span class="comment"># تعيد قيمة وتتوقف</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="variable">n</span> -= <span class="number">1</span><br><br>
+<span class="comment"># استخدام المولد</span><br>
+<span class="keyword">for</span> <span class="variable">number</span> <span class="keyword">in</span> <span class="function">countdown</span>(<span class="number">5</span>):<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">print</span>(<span class="variable">number</span>, end=<span class="string">" "</span>)  <span class="comment"># ✅ 5 4 3 2 1</span><br><br>
+<span class="comment"># مقارنة بين القائمة والمولد</span><br>
+<span class="comment"># القائمة: تخزن كل القيم في الذاكرة</span><br>
+<span class="variable">list_squares</span> = [<span class="variable">x</span>**<span class="number">2</span> <span class="keyword">for</span> <span class="variable">x</span> <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">1000000</span>)]<br>
+<br>
+<span class="comment"># المولد: ينتج قيمة واحدة كل مرة</span><br>
+<span class="variable">gen_squares</span> = (<span class="variable">x</span>**<span class="number">2</span> <span class="keyword">for</span> <span class="variable">x</span> <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">1000000</span>))<br><br>
+<span class="keyword">import</span> <span class="variable">sys</span><br>
+<span class="keyword">print</span>(<span class="string">"\nList size:"</span>, <span class="variable">sys</span>.getsizeof(<span class="variable">list_squares</span>))<br>
+<span class="keyword">print</span>(<span class="string">"Generator size:"</span>, <span class="variable">sys</span>.getsizeof(<span class="variable">gen_squares</span>))
+    </div>
+</div>
