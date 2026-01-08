@@ -7,20 +7,20 @@
 </head>
 <body>
 
-  <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>تعلم SQL - الـ 15 خطوة كاملة</title>
+    <title>تعلم SQL - النسخة المعدلة</title>
     <style>
         :root {
             --primary-color: #2c3e50;
-            --accent-color: #27ae60; /* تغيير طفيف للون الأخضر */
+            --accent-color: #3498db;
             --bg-color: #f4f6f9;
             --card-bg: #ffffff;
             --code-bg: #1e1e1e;
-            --terminal-bg: #0c0c0c;
+            --terminal-bg: #111;
             --terminal-text: #00ff00;
         }
 
@@ -34,7 +34,7 @@
         }
 
         .container {
-            max-width: 900px;
+            max-width: 1000px;
             margin: 0 auto;
         }
 
@@ -42,38 +42,32 @@
             text-align: center;
             margin-bottom: 40px;
             padding: 30px;
-            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d); /* تدرج لوني مميز */
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
             color: white;
             border-radius: 12px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
         }
 
         header h1 { margin: 0; font-size: 2.2rem; }
-        header p { margin-top: 10px; opacity: 0.95; font-size: 1.1rem; }
+        header p { margin-top: 10px; opacity: 0.9; }
 
         .section-title {
             color: var(--primary-color);
             border-bottom: 3px solid var(--accent-color);
             display: inline-block;
-            margin-top: 50px;
-            margin-bottom: 25px;
+            margin-top: 40px;
+            margin-bottom: 20px;
             padding-bottom: 5px;
-            font-size: 1.5rem;
+            font-size: 1.4rem;
         }
 
         .step-card {
             background: var(--card-bg);
             border-radius: 10px;
-            padding: 25px;
-            margin-bottom: 25px;
-            border-right: 5px solid var(--accent-color); /* شريط جانبي جمالي */
-            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-            transition: transform 0.2s;
-        }
-
-        .step-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            padding: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+            border-right: 5px solid var(--accent-color);
         }
 
         .step-header {
@@ -85,68 +79,90 @@
         .step-number {
             background: var(--primary-color);
             color: white;
-            width: 35px;
-            height: 35px;
+            width: 30px;
+            height: 30px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             font-weight: bold;
-            margin-left: 15px;
-            font-size: 1.1rem;
+            margin-left: 10px;
         }
 
-        h3 { margin: 0; color: var(--primary-color); font-size: 1.2rem; }
+        h3 { margin: 0; color: var(--primary-color); }
 
         /* تنسيق الكود */
         .code-block {
             background-color: var(--code-bg);
             color: #d4d4d4;
             padding: 15px;
-            border-radius: 8px;
+            border-radius: 8px 8px 0 0;
             font-family: 'Consolas', 'Courier New', monospace;
             overflow-x: auto;
             direction: ltr;
             text-align: left;
-            margin-bottom: 10px;
-            font-size: 0.95rem;
+            border-bottom: 1px solid #444;
         }
 
-        .keyword { color: #569cd6; font-weight: bold; } 
-        .string { color: #ce9178; } 
-        .number { color: #b5cea8; } 
+        .keyword { color: #569cd6; font-weight: bold; }
+        .string { color: #ce9178; }
+        .number { color: #b5cea8; }
+        .comment { color: #6a9955; font-style: italic; }
 
-        /* تنسيق التيرمينال */
+        /* تنسيق التيرمينال والجدول */
         .terminal-block {
             background-color: var(--terminal-bg);
             color: var(--terminal-text);
             padding: 15px;
-            border-radius: 8px;
+            border-radius: 0 0 8px 8px;
             font-family: 'Courier New', Courier, monospace;
-            font-size: 0.85em;
-            border: 1px solid #333;
+            font-size: 0.9em;
             direction: ltr;
             text-align: left;
-            white-space: pre;
             overflow-x: auto;
         }
 
-        .terminal-label {
-            font-size: 0.8em;
-            color: #666;
-            margin-bottom: 5px;
-            display: block;
-            text-align: right;
-            font-weight: bold;
+        /* تنسيق الجدول داخل التيرمينال */
+        .result-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 5px;
+            color: #ddd;
+        }
+
+        .result-table th, .result-table td {
+            border: 1px solid #444;
+            padding: 8px 10px;
+            text-align: left;
+        }
+
+        .result-table th {
+            background-color: #222;
+            color: #fff;
+            text-transform: uppercase;
+            font-size: 0.85em;
+            letter-spacing: 1px;
+        }
+
+        .result-table td {
+            color: var(--terminal-text);
+            font-size: 0.9em;
+        }
+
+        .result-table tr:nth-child(even) {
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+
+        .null-value {
+            color: #888;
+            font-style: italic;
         }
 
         footer {
             text-align: center;
             margin-top: 50px;
-            padding: 20px;
             color: #777;
             font-size: 0.9em;
-            border-top: 1px solid #ddd;
         }
 
     </style>
@@ -156,8 +172,8 @@
 <div class="container">
 
     <header>
-        <h1>التطبيق العملي الكامل للـ SQL</h1>
-        <p>الخطوات الـ 15 مرتبة بالتسلسل (إنشاء، إدخال، تعديل، استعلام، حذف)</p>
+        <h1>تطبيق SQL العملي</h1>
+        <p>النسخة المحسنة مع جداول مرتبة وأكواد واضحة</p>
     </header>
 
     <div class="step-card">
@@ -169,7 +185,7 @@
             &nbsp;&nbsp;location <span class="keyword">VARCHAR</span>(50)<br>
             );
         </div>
-        <div class="terminal-block">Command(s) completed successfully.</div>
+        <div class="terminal-block">> Command(s) completed successfully.</div>
     </div>
 
     <div class="step-card">
@@ -183,11 +199,11 @@
             &nbsp;&nbsp;<span class="keyword">FOREIGN KEY</span> (dept_id) <span class="keyword">REFERENCES</span> Department(dept_id)<br>
             );
         </div>
-        <div class="terminal-block">Command(s) completed successfully.</div>
+        <div class="terminal-block">> Command(s) completed successfully.</div>
     </div>
 
     <div class="step-card">
-        <div class="step-header"><span class="step-number">3</span><h3>إدخال بيانات الأقسام</h3></div>
+        <div class="step-header"><span class="step-number">3</span><h3>إدخال بيانات الأقسام (واضح ومفصل)</h3></div>
         <div class="code-block">
             <span class="keyword">INSERT INTO</span> Department (dept_id, dept_name, location)<br>
             <span class="keyword">VALUES</span><br>
@@ -195,20 +211,25 @@
             (2, <span class="string">'Information Systems'</span>, <span class="string">'Building B'</span>),<br>
             (3, <span class="string">'Engineering'</span>, <span class="string">'Building C'</span>);
         </div>
-        <div class="terminal-block">(3 rows affected)</div>
+        <div class="terminal-block">> (3 rows affected)</div>
     </div>
 
     <div class="step-card">
-        <div class="step-header"><span class="step-number">4</span><h3>عرض جدول الأقسام</h3></div>
+        <div class="step-header"><span class="step-number">4</span><h3>عرض جدول الأقسام (SELECT)</h3></div>
         <div class="code-block">
             <span class="keyword">SELECT</span> * <span class="keyword">FROM</span> Department;
         </div>
         <div class="terminal-block">
-dept_id | dept_name           | location
---------|---------------------|-----------
-1       | Computer Science    | Building A
-2       | Information Systems | Building B
-3       | Engineering         | Building C
+            <table class="result-table">
+                <thead>
+                    <tr><th>dept_id</th><th>dept_name</th><th>location</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>1</td><td>Computer Science</td><td>Building A</td></tr>
+                    <tr><td>2</td><td>Information Systems</td><td>Building B</td></tr>
+                    <tr><td>3</td><td>Engineering</td><td>Building C</td></tr>
+                </tbody>
+            </table>
         </div>
     </div>
 
@@ -222,76 +243,90 @@ dept_id | dept_name           | location
             (103, <span class="string">'Omar'</span>, <span class="number">21</span>, 1),<br>
             (104, <span class="string">'Zainab'</span>, <span class="number">23</span>, 3);
         </div>
-        <div class="terminal-block">(4 rows affected)</div>
+        <div class="terminal-block">> (4 rows affected)</div>
     </div>
 
     <div class="step-card">
-        <div class="step-header"><span class="step-number">6</span><h3>عرض جدول الطلاب</h3></div>
+        <div class="step-header"><span class="step-number">6</span><h3>عرض جدول الطلاب (SELECT)</h3></div>
         <div class="code-block">
             <span class="keyword">SELECT</span> * <span class="keyword">FROM</span> Students;
         </div>
         <div class="terminal-block">
-student_id | student_name | age | dept_id
------------|--------------|-----|--------
-101        | Ali          | 20  | 1
-102        | Sara         | 22  | 2
-103        | Omar         | 21  | 1
-104        | Zainab       | 23  | 3
+            <table class="result-table">
+                <thead>
+                    <tr><th>student_id</th><th>student_name</th><th>age</th><th>dept_id</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>101</td><td>Ali</td><td>20</td><td>1</td></tr>
+                    <tr><td>102</td><td>Sara</td><td>22</td><td>2</td></tr>
+                    <tr><td>103</td><td>Omar</td><td>21</td><td>1</td></tr>
+                    <tr><td>104</td><td>Zainab</td><td>23</td><td>3</td></tr>
+                </tbody>
+            </table>
         </div>
     </div>
 
     <div class="step-card">
-        <div class="step-header"><span class="step-number">7</span><h3>تحديث بيانات (تغيير عمر علي)</h3></div>
+        <div class="step-header"><span class="step-number">7</span><h3>تحديث بيانات (Update Ali)</h3></div>
         <div class="code-block">
             <span class="keyword">UPDATE</span> Students <br>
-            <span class="keyword">SET</span> age = <span class="number">21</span><br>
+            <span class="keyword">SET</span> age = <span class="number">21</span> <br>
             <span class="keyword">WHERE</span> student_name = <span class="string">'Ali'</span>;
         </div>
-        <div class="terminal-block">(1 row affected)</div>
+        <div class="terminal-block">> (1 row affected)</div>
     </div>
 
     <div class="step-card">
-        <div class="step-header"><span class="step-number">8</span><h3>إضافة عمود جديد (Email)</h3></div>
+        <div class="step-header"><span class="step-number">8</span><h3>إضافة عمود الإيميل (ALTER)</h3></div>
         <div class="code-block">
-            <span class="keyword">ALTER TABLE</span> Students<br>
+            <span class="keyword">ALTER TABLE</span> Students <br>
             <span class="keyword">ADD</span> email <span class="keyword">VARCHAR</span>(100);
         </div>
-        <div class="terminal-block">Command(s) completed successfully.</div>
+        <div class="terminal-block">> Command(s) completed successfully.</div>
     </div>
 
     <div class="step-card">
-        <div class="step-header"><span class="step-number">9</span><h3>تغيير اسم عمود (في جدول الأقسام)</h3></div>
+        <div class="step-header"><span class="step-number">9</span><h3>تغيير اسم عمود (مثال واضح)</h3></div>
         <div class="code-block">
+            <span class="comment">/* الصيغة: الجدول.الاسم_القديم , الاسم_الجديد , نوع_التغيير */</span><br>
             <span class="keyword">EXEC</span> sp_rename <span class="string">'Department.dept_name'</span>, <span class="string">'department_name'</span>, <span class="string">'COLUMN'</span>;
         </div>
         <div class="terminal-block">
-Caution: Changing any part of an object name could break scripts and stored procedures.
-Object was renamed to 'department_name'.
+            > Caution: Changing any part of an object name could break scripts.<br>
+            > Object was renamed to 'department_name'.
         </div>
     </div>
 
     <div class="step-card">
-        <div class="step-header"><span class="step-number">10</span><h3>حذف سجل (حذف الطالب Omar)</h3></div>
+        <div class="step-header"><span class="step-number">10</span><h3>حذف الطالب عمر (DELETE)</h3></div>
         <div class="code-block">
-            <span class="keyword">DELETE FROM</span> Students<br>
+            <span class="keyword">DELETE FROM</span> Students <br>
             <span class="keyword">WHERE</span> student_name = <span class="string">'Omar'</span>;
         </div>
-        <div class="terminal-block">(1 row affected)</div>
+        <div class="terminal-block">> (1 row affected)</div>
     </div>
+
+    <h2 class="section-title">عمليات الربط (JOINS)</h2>
 
     <div class="step-card">
         <div class="step-header"><span class="step-number">11</span><h3>الربط الداخلي (INNER JOIN)</h3></div>
         <div class="code-block">
             <span class="keyword">SELECT</span> * <span class="keyword">FROM</span> Students <br>
-            <span class="keyword">INNER JOIN</span> Department<br>
-            <span class="keyword">ON</span> Students.dept_id = Department.dept_id;
+            <span class="keyword">INNER JOIN</span> Department <span class="keyword">ON</span> Students.dept_id = Department.dept_id;
         </div>
         <div class="terminal-block">
-student_id | Name   | age | dept | email | dept_id | department_name     | location
------------|--------|-----|------|-------|---------|---------------------|-----------
-101        | Ali    | 21  | 1    | NULL  | 1       | Computer Science    | Building A
-102        | Sara   | 22  | 2    | NULL  | 2       | Information Systems | Building B
-104        | Zainab | 23  | 3    | NULL  | 3       | Engineering         | Building C
+            <table class="result-table">
+                <thead>
+                    <tr>
+                        <th>ID</th><th>Name</th><th>Age</th><th>Dept_FK</th><th>Email</th><th>Dept_ID</th><th>Dept_Name</th><th>Loc</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>101</td><td>Ali</td><td>21</td><td>1</td><td class="null-value">NULL</td><td>1</td><td>Computer Science</td><td>Building A</td></tr>
+                    <tr><td>102</td><td>Sara</td><td>22</td><td>2</td><td class="null-value">NULL</td><td>2</td><td>Info Systems</td><td>Building B</td></tr>
+                    <tr><td>104</td><td>Zainab</td><td>23</td><td>3</td><td class="null-value">NULL</td><td>3</td><td>Engineering</td><td>Building C</td></tr>
+                </tbody>
+            </table>
         </div>
     </div>
 
@@ -299,15 +334,21 @@ student_id | Name   | age | dept | email | dept_id | department_name     | locat
         <div class="step-header"><span class="step-number">12</span><h3>الربط الأيسر (LEFT JOIN)</h3></div>
         <div class="code-block">
             <span class="keyword">SELECT</span> * <span class="keyword">FROM</span> Students <br>
-            <span class="keyword">LEFT JOIN</span> Department<br>
-            <span class="keyword">ON</span> Students.dept_id = Department.dept_id;
+            <span class="keyword">LEFT JOIN</span> Department <span class="keyword">ON</span> Students.dept_id = Department.dept_id;
         </div>
         <div class="terminal-block">
-student_id | Name   | age | dept | email | dept_id | department_name     | location
------------|--------|-----|------|-------|---------|---------------------|-----------
-101        | Ali    | 21  | 1    | NULL  | 1       | Computer Science    | Building A
-102        | Sara   | 22  | 2    | NULL  | 2       | Information Systems | Building B
-104        | Zainab | 23  | 3    | NULL  | 3       | Engineering         | Building C
+            <table class="result-table">
+                <thead>
+                    <tr>
+                        <th>ID</th><th>Name</th><th>Age</th><th>Dept_FK</th><th>Email</th><th>Dept_ID</th><th>Dept_Name</th><th>Loc</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>101</td><td>Ali</td><td>21</td><td>1</td><td class="null-value">NULL</td><td>1</td><td>Computer Science</td><td>Building A</td></tr>
+                    <tr><td>102</td><td>Sara</td><td>22</td><td>2</td><td class="null-value">NULL</td><td>2</td><td>Info Systems</td><td>Building B</td></tr>
+                    <tr><td>104</td><td>Zainab</td><td>23</td><td>3</td><td class="null-value">NULL</td><td>3</td><td>Engineering</td><td>Building C</td></tr>
+                </tbody>
+            </table>
         </div>
     </div>
 
@@ -315,15 +356,21 @@ student_id | Name   | age | dept | email | dept_id | department_name     | locat
         <div class="step-header"><span class="step-number">13</span><h3>الربط الأيمن (RIGHT JOIN)</h3></div>
         <div class="code-block">
             <span class="keyword">SELECT</span> * <span class="keyword">FROM</span> Students <br>
-            <span class="keyword">RIGHT JOIN</span> Department<br>
-            <span class="keyword">ON</span> Students.dept_id = Department.dept_id;
+            <span class="keyword">RIGHT JOIN</span> Department <span class="keyword">ON</span> Students.dept_id = Department.dept_id;
         </div>
         <div class="terminal-block">
-student_id | Name   | age | dept | email | dept_id | department_name     | location
------------|--------|-----|------|-------|---------|---------------------|-----------
-101        | Ali    | 21  | 1    | NULL  | 1       | Computer Science    | Building A
-102        | Sara   | 22  | 2    | NULL  | 2       | Information Systems | Building B
-104        | Zainab | 23  | 3    | NULL  | 3       | Engineering         | Building C
+            <table class="result-table">
+                <thead>
+                    <tr>
+                        <th>ID</th><th>Name</th><th>Age</th><th>Dept_FK</th><th>Email</th><th>Dept_ID</th><th>Dept_Name</th><th>Loc</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>101</td><td>Ali</td><td>21</td><td>1</td><td class="null-value">NULL</td><td>1</td><td>Computer Science</td><td>Building A</td></tr>
+                    <tr><td>102</td><td>Sara</td><td>22</td><td>2</td><td class="null-value">NULL</td><td>2</td><td>Info Systems</td><td>Building B</td></tr>
+                    <tr><td>104</td><td>Zainab</td><td>23</td><td>3</td><td class="null-value">NULL</td><td>3</td><td>Engineering</td><td>Building C</td></tr>
+                </tbody>
+            </table>
         </div>
     </div>
 
@@ -331,32 +378,38 @@ student_id | Name   | age | dept | email | dept_id | department_name     | locat
         <div class="step-header"><span class="step-number">14</span><h3>الربط الكامل (FULL OUTER JOIN)</h3></div>
         <div class="code-block">
             <span class="keyword">SELECT</span> * <span class="keyword">FROM</span> Students <br>
-            <span class="keyword">FULL OUTER JOIN</span> Department<br>
-            <span class="keyword">ON</span> Students.dept_id = Department.dept_id;
+            <span class="keyword">FULL OUTER JOIN</span> Department <span class="keyword">ON</span> Students.dept_id = Department.dept_id;
         </div>
         <div class="terminal-block">
-student_id | Name   | age | dept | email | dept_id | department_name     | location
------------|--------|-----|------|-------|---------|---------------------|-----------
-101        | Ali    | 21  | 1    | NULL  | 1       | Computer Science    | Building A
-102        | Sara   | 22  | 2    | NULL  | 2       | Information Systems | Building B
-104        | Zainab | 23  | 3    | NULL  | 3       | Engineering         | Building C
+            <table class="result-table">
+                <thead>
+                    <tr>
+                        <th>ID</th><th>Name</th><th>Age</th><th>Dept_FK</th><th>Email</th><th>Dept_ID</th><th>Dept_Name</th><th>Loc</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>101</td><td>Ali</td><td>21</td><td>1</td><td class="null-value">NULL</td><td>1</td><td>Computer Science</td><td>Building A</td></tr>
+                    <tr><td>102</td><td>Sara</td><td>22</td><td>2</td><td class="null-value">NULL</td><td>2</td><td>Info Systems</td><td>Building B</td></tr>
+                    <tr><td>104</td><td>Zainab</td><td>23</td><td>3</td><td class="null-value">NULL</td><td>3</td><td>Engineering</td><td>Building C</td></tr>
+                </tbody>
+            </table>
         </div>
     </div>
 
     <div class="step-card">
-        <div class="step-header"><span class="step-number">15</span><h3>حذف الجداول (Drop Tables)</h3></div>
+        <div class="step-header"><span class="step-number">15</span><h3>حذف الجداول (DROP)</h3></div>
         <div class="code-block">
-            <span class="keyword">DROP TABLE</span> Students;<br>
+            <span class="keyword">DROP TABLE</span> Students; <br>
             <span class="keyword">DROP TABLE</span> Department;
         </div>
         <div class="terminal-block">
-Command(s) completed successfully.
-Command(s) completed successfully.
+            > Command(s) completed successfully.<br>
+            > Command(s) completed successfully.
         </div>
     </div>
 
     <footer>
-        <p>تم إعداد هذا الملف بناءً على طلب المستخدم | SQL Tutorial</p>
+        <p>تم تحويل المخرجات إلى جداول HTML منظمة لسهولة القراءة</p>
     </footer>
 
 </div>
